@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+  http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" 
+  id="WebApp_ID" version="3.1">
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <servlet>
+<!--    Esse  cara representa o front controller vai abstrair detalhes das requisições HTTP ao mesmo tempo que saberá encaminhar cada requisição o controller mais adequado da aplicação -->
+        <servlet-name>Spring MVC Dispatcher Servlet</servlet-name>
+        <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+       <!--   indicando onde está configuração do Spring framework -->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>
+                /WEB-INF/spring-context.xml
+            </param-value>
+        </init-param>
+       <!--  servlet deve ser carregado ao inicar aplicação  -->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+ 
+ 	<!-- faz mapeamento do Servlet assim para qualquer requisição enviada para localhost:8080/springmvc/ esse / alguma coisa será atendido pelo servlet do Spring MVC -->
+    <servlet-mapping>
+        <servlet-name>Spring MVC Dispatcher Servlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+</web-app>
